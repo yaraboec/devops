@@ -1,23 +1,11 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
+apiVersion: v1
+kind: Service
 metadata:
-  name: shakalovapp-argo-application
-  namespace: argocd
+  name: shakalovapp-service
 spec:
-  project: default
-
-  source:
-    repoURL: https://github.com/yaraboec/devops.git
-    targetRevision: HEAD
-    path: dev
-  destination: 
-    server: https://kubernetes.default.svc
-    namespace: shakalovapp
-
-  syncPolicy:
-    syncOptions:
-    - CreateNamespace=true
-
-    automated:
-      selfHeal: true
-      prune: true
+  selector:
+    app: shakalovapp
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
