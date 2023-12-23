@@ -1,8 +1,0 @@
-replicaCount: 1
-image:
-  repository: myapp/repository
-  tag: latest
-service:
-  name: myapp-service
-  type: ClusterIP
-  port: 80

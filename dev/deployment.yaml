@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shakalovapp
+spec:
+  selector:
+    matchLabels:
+      app: shakalovapp
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: shakalovapp
+    spec:
+      containers:
+      - name: shakalovapp
+        image: nanajanashia/argocd-app:1.2
+        ports:
+        - containerPort: 8080
